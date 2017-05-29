@@ -1,9 +1,11 @@
+//Task function constructor
 function NewTask(text, completed) {
     var self = this;
     self.text = text;
     self.completed = ko.observable(completed);
 }
 
+// ViewModel
 var ViewModel = function(toDoTasks) {             
     var self = this; 
 
@@ -49,10 +51,14 @@ var ViewModel = function(toDoTasks) {
         })
     }
 
+    //save data to local storage
     ko.computed(function () {
 			localStorage.setItem('todos-knockoutjs', ko.toJSON(self.toDoTasks));
 	});
 };
 
+//get data from local storage
 var savedData = ko.utils.parseJson(localStorage.getItem('todos-knockoutjs'));
+
+//Activate binding
 ko.applyBindings(new ViewModel(savedData || [])); 
