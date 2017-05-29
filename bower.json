@@ -1,0 +1,20 @@
+{
+  "name": "todo",
+  "homepage": "https://github.com/andrey-smolko/todo_Knockout",
+  "authors": [
+    "Andrey Smolko <andrey.smolko.it@gmail.com>"
+  ],
+  "description": "todoList in Knockout",
+  "main": "",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "knockout": "^3.4.2"
+  }
+}
