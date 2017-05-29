@@ -1,0 +1,43 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="style.css">
+    <script src='./bower_components/knockout/dist/knockout.js'></script>
+    <title>ToDoList</title>
+</head>
+<body>
+    <div class='container'>
+        <h1 data-bind="text: title"></h1>
+        <div class="form-group">
+            <div class="input-group">
+                <input data-bind="textInput: newTaskText,
+                                  event: { keypress: enterPress }" type="text" class="form-control" placeholder="Enter New Task"/>
+                <span class="input-group-btn">
+                    <button data-bind="click: addTask" class="btn btn-default" type="button">Add Task</button>
+                </span>
+            </div>
+        </div>
+        <ul data-bind="foreach: toDoTasks" class="list-group">
+            <li data-bind="css: { completed: completed}" class="list-group-item">
+                <span class="checkbox-item">
+                    <input data-bind="checked: completed" type="checkbox">
+                </span>
+                <span data-bind="text: text"></span>
+                <button data-bind="click: $root.deleteTask" type="button" class="btn btn-default btn-xs destroy">Delete</button>
+            </li>
+        </ul>
+        <div>
+            <span data-bind="visible: activeTasks()">
+                <span data-bind="text: activeTasks"></span>
+                <span>active</span>
+                <span data-bind="text: getLabel()"></span>
+            </span>
+            <button data-bind="visible: completedTasks(),
+                               click: clearCompleted" type="button" class="btn btn-default btn-xs clear-completed">Clear Completed</button>
+        </div>
+    </div>
+</body>
+</html>
+<script src='app.js'></script>
